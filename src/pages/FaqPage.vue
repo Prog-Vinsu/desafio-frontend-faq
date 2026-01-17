@@ -22,6 +22,8 @@
 
         <SearchInput />
 
+        <FaqList />
+
       </div>
     </div>
 
@@ -30,13 +32,21 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
   import { useQuasar } from 'quasar'
+  import { useFaqStore } from 'src/stores/faq-store';
+
   import SearchInput from 'src/components/FAQ/SearchInput.vue';
   import AppBanner from 'src/components/FAQ/AppBanner.vue';
+  import FaqList from 'src/components/FAQ/FaqList.vue';
 
   const $q = useQuasar()
+  const faqStore = useFaqStore();
   const isMobile = computed(() => $q.screen.lt.md)
+
+  onMounted(async () => {
+    await faqStore.fetchFaqs();
+  });
 
 </script>
 

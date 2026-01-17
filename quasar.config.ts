@@ -80,6 +80,13 @@ export default defineConfig((/* ctx */) => {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
       // https: true,
+      proxy: {
+      '/api': {
+        target: 'https://upticket.uppersoft.cc',
+        changeOrigin: true,
+        secure: true,
+      }
+    },
       open: true, // opens browser window automatically
     },
 
