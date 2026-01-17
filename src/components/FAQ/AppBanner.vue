@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-light q-py-lg">
+  <div class="bg-primary-light q-py-lg full-width">
     <div class="container flex items-center" :class="isMobile ? 'column justify-center text-center q-gutter-y-md' : 'row justify-between'">
       <div class="text-h5 text-weight-bold text-grey-9" style="line-height: 1.2;">
         Experimente o aplicativo<br v-if="isMobile"> de Jaguaré!

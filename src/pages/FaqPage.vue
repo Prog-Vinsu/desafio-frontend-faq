@@ -1,7 +1,7 @@
 <template>
   <q-page class="column no-padding">
-    <div class="col q-pa-md">
-      <div class="container" :style="{paddingRight: isMobile ? '0' : '20%'}">
+    <div class="col q-pa-md full-width">
+      <div class="container" :style="{paddingRight: isMobile ? '16px' : '20%'}">
 
         <div class="q-mb-lg text-grey-6">
           <div v-if="!isMobile">
