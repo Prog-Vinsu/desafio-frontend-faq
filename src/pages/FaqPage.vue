@@ -45,6 +45,7 @@
   const isMobile = computed(() => $q.screen.lt.md)
 
   onMounted(async () => {
+    faqStore.setSearchTerm('');
     await faqStore.fetchFaqs();
   });
 

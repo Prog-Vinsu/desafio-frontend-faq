@@ -20,16 +20,16 @@ export const useFaqStore = defineStore('faq', () => {
       items.value = rawList
         .filter(item => item.ticket && item.ticket.description)
         .map(item => {
-           const title = item.ticket.description as string;
-           const content = item.answer || '';
-           const plainText = content.replace(/<[^>]*>?/gm, ' ');
+          const title = item.ticket.description as string;
+          const content = item.answer || '';
+          const plainText = content.replace(/<[^>]*>?/gm, ' ');
 
-           return {
-             id: item.id,
-             title,
-             content,
-             searchString: `${title} ${plainText}`.toLowerCase()
-           };
+          return {
+            id: item.id,
+            title,
+            content,
+            searchString: `${title} ${plainText}`.toLowerCase()
+          };
         });
 
     } catch (err) {

@@ -2,20 +2,24 @@
   <div class="q-mt-md">
     <FaqSkeleton v-if="faqStore.loading" />
 
-    <div v-else-if="faqStore.error" class="text-center q-py-xl">
-      <q-icon name="error_outline" color="negative" size="48px" />
-      <p class="text-grey-7 q-mt-sm">Não foi possível carregar as dúvidas.</p>
-      <q-btn label="Tentar novamente" color="primary" no-caps @click="faqStore.fetchFaqs()" />
-    </div>
+    <FaqError
+      v-else-if="faqStore.error"
+      @retry="faqStore.fetchFaqs()"
+    />
 
-    <div v-else-if="!faqStore.hasResults && faqStore.items.length > 0" class="text-center q-py-xl">
-      <q-icon name="search_off" color="grey-4" size="64px" />
-      <p class="text-grey-6 text-body1 q-mt-sm">
-        Não encontramos resultados para "<strong>{{ faqStore.searchTerm }}</strong>".
-      </p>
+    <div v-else-if="!faqStore.hasResults && faqStore.items.length > 0">
+      <div class="text-weight-bold text-dark q-mb-md">
+          Resultados encontrados para: {{ faqStore.searchTerm }}
+      </div>
+
+      <FaqEmpty @clear="limparBusca" />
     </div>
 
     <div v-else>
+      <div v-if="faqStore.searchTerm && faqStore.hasResults" class="text-weight-bold text-dark q-mb-md">
+            Resultados encontrados para: {{ faqStore.searchTerm }}
+      </div>
+
       <div v-for="item in faqStore.filteredItems" :key="item.id">
          <FaqItem :item="item" />
       </div>
@@ -28,6 +32,12 @@
   import { useFaqStore } from 'src/stores/faq-store';
   import FaqItem from './FaqItem.vue';
   import FaqSkeleton from './FaqSkeleton.vue';
+  import FaqEmpty from './FaqEmpty.vue';
+  import FaqError from './FaqError.vue';
 
   const faqStore = useFaqStore();
+
+  function limparBusca() {
+    faqStore.setSearchTerm('');
+  }
 </script>
