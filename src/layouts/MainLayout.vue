@@ -130,32 +130,6 @@
     </q-page-container>
 
     <q-footer class="bg-white text-grey-8">
-      <div class="bg-primary-light q-py-lg">
-        <div class="container flex items-center" :class="isMobile ? 'column justify-center text-center q-gutter-y-md' : 'row justify-between'">
-            <div class="text-h5 text-weight-bold text-grey-9" style="line-height: 1.2;">
-              Experimente o aplicativo<br v-if="isMobile"> de Jaguaré!
-            </div>
-
-            <div class="row q-gutter-sm items-center">
-              <a href="https://apple.com/br/app-store" target="_blank" class="app-link">
-                <img
-                  src="/src/assets/serviceImages/appStore.png"
-                  alt="Baixar na App Store"
-                  :style="{ height: isMobile ? '38px' : '48px' }"
-                >
-              </a>
-              <a href="https://play.google.com/store" target="_blank" class="app-link">
-                <img
-                  src="/src/assets/serviceImages/GooglePlay.png"
-                  alt="Disponível no Google Play"
-                  :style="{ height: isMobile ? '50px' : '61px' }"
-                >
-              </a>
-            </div>
-
-        </div>
-      </div>
-
       <div class="container q-py-xl">
         <div v-if="isMobile" class="column items-center text-center q-gutter-y-lg">
            <div class="row items-center justify-center">
@@ -260,65 +234,65 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useQuasar } from 'quasar'
+  import { ref, computed } from 'vue'
+  import { useQuasar } from 'quasar'
 
-const $q = useQuasar()
-const isMobile = computed(() => $q.screen.lt.md)
+  const $q = useQuasar()
+  const isMobile = computed(() => $q.screen.lt.md)
 
-const leftDrawerOpen = ref(false)
-function toggleSidebar() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
+  const leftDrawerOpen = ref(false)
+  function toggleSidebar() {
+    leftDrawerOpen.value = !leftDrawerOpen.value
+  }
 
-const menuList = [
-  { label: 'Agendar', path: '/agendar', icon: 'event' },
-  { label: 'Meus Agendamentos', path: '/meus-agendamentos', icon: 'list_alt' },
-  { label: 'Ajuda', path: '/faq', icon: 'help_outline' }
-]
+  const menuList = [
+    { label: 'Agendar', path: '/agendar', icon: 'event' },
+    { label: 'Meus Agendamentos', path: '/meus-agendamentos', icon: 'list_alt' },
+    { label: 'Ajuda', path: '/faq', icon: 'help_outline' }
+  ]
 </script>
 
 <style lang="scss" scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.item-ativo {
-  position: relative;
-  color: #000 !important;
-  font-weight: bold !important;
-
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    height: 3px;
-    background-color: #3a3a3a;
+    padding-left: 16px;
+    padding-right: 16px;
   }
-}
 
-.text-no-decoration {
-  text-decoration: none;
-}
-.hover-underline:hover {
-  text-decoration: underline;
-}
-.border-top-light {
-    border-top: 1px solid #eee;
-}
+  .item-ativo {
+    position: relative;
+    color: #000 !important;
+    font-weight: bold !important;
 
-.bg-primary-light {
-  background-color: $primary-light !important;
-}
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #3a3a3a;
+    }
+  }
 
-.bg-background-page {
-  background-color: $background-page !important;
-}
+  .text-no-decoration {
+    text-decoration: none;
+  }
+  .hover-underline:hover {
+    text-decoration: underline;
+  }
+  .border-top-light {
+      border-top: 1px solid #eee;
+  }
+
+  .bg-primary-light {
+    background-color: $primary-light !important;
+  }
+
+  .bg-background-page {
+    background-color: $background-page !important;
+  }
 </style>
