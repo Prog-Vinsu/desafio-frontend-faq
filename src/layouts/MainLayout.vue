@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lff">
     <q-header class="bg-white text-grey-8 q-py-sm" style="border-bottom: 1px solid #e0e0e0;">
       <q-toolbar class="container">
         <q-btn
@@ -54,7 +54,7 @@
                 :to="item.path"
                 exact
                 class="text-grey-8 text-weight-regular"
-                active-class="item-ativo"
+                :class="{ 'item-ativo': route.path === item.path }"
               />
             </div>
             <q-space />
@@ -236,9 +236,11 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { useQuasar } from 'quasar'
+import { useRoute } from 'vue-router'
 
   const $q = useQuasar()
   const isMobile = computed(() => $q.screen.lt.md)
+  const route = useRoute()
 
   const leftDrawerOpen = ref(false)
   function toggleSidebar() {
@@ -262,20 +264,11 @@
   }
 
   .item-ativo {
-    position: relative;
     color: #000 !important;
     font-weight: bold !important;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: #3a3a3a;
-    }
+    background: transparent;
+    box-shadow: inset 0 -3px 0 0 #3a3a3a;
+    border-radius: 0;
   }
 
   .text-no-decoration {
