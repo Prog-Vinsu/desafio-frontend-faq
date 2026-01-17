@@ -1,15 +1,6 @@
 <template>
   <div class="q-mt-md">
-
-    <div v-if="faqStore.loading" class="q-gutter-y-md">
-      <q-card v-for="n in 4" :key="n" flat bordered class="bg-white">
-        <q-item>
-          <q-item-section>
-            <q-skeleton type="text" width="60%" />
-          </q-item-section>
-        </q-item>
-      </q-card>
-    </div>
+    <FaqSkeleton v-if="faqStore.loading" />
 
     <div v-else-if="faqStore.error" class="text-center q-py-xl">
       <q-icon name="error_outline" color="negative" size="48px" />
@@ -36,6 +27,7 @@
 <script setup lang="ts">
   import { useFaqStore } from 'src/stores/faq-store';
   import FaqItem from './FaqItem.vue';
+  import FaqSkeleton from './FaqSkeleton.vue';
 
   const faqStore = useFaqStore();
 </script>
