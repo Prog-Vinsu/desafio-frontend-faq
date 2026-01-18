@@ -8,12 +8,12 @@
     header-class="q-pa-md items-center"
   >
     <template v-slot:header>
-      <div class="row full-width items-center no-wrap header-wrapper">
+      <div class="row full-width items-center no-wrap header-wrapper text-body1">
 
         <div class="col text-wrapper">
           <div
             class="title-text"
-            :class="isOpen ? 'text-weight-bold' : 'text-weight-regular'"
+            :class="isOpen ? 'text-weight-medium' : 'text-weight-regular'"
           >
             {{ item.title }}
           </div>
