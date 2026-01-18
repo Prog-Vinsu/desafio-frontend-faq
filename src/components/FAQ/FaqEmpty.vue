@@ -3,7 +3,7 @@
 
     <div class="q-mb-md">
       <q-img
-        src="/src/assets/ilustracao-placeholder-busca.svg"
+        :src="ilustracaoBusca"
         width="200px"
         fit="contain"
         class="q-mb-md"
@@ -33,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+  import ilustracaoBusca from 'src/assets/ilustracao-placeholder-busca.svg'
   defineEmits(['clear']);
 </script>
 

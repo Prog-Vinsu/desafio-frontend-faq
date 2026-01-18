@@ -8,14 +8,14 @@
       <div class="row q-gutter-sm items-center">
         <a href="https://apple.com/br/app-store" target="_blank" class="app-link">
           <img
-            src="/src/assets/serviceImages/appStore.png"
+            :src="imgAppStore"
             alt="Baixar na App Store"
             :style="{ height: isMobile ? '38px' : '48px' }"
           >
         </a>
         <a href="https://play.google.com/store" target="_blank" class="app-link">
           <img
-            src="/src/assets/serviceImages/GooglePlay.png"
+            :src="imgGooglePlay"
             alt="Disponível no Google Play"
             :style="{ height: isMobile ? '50px' : '61px' }"
           >
@@ -28,6 +28,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useQuasar } from 'quasar'
+  import imgAppStore from 'src/assets/serviceImages/appStore.png'
+  import imgGooglePlay from 'src/assets/serviceImages/GooglePlay.png'
 
   const $q = useQuasar()
   const isMobile = computed(() => $q.screen.lt.md)
